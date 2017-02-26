@@ -74,19 +74,16 @@ public:
 
 class Zombie {
 public:
-	int life = 100;
-
+	int life;
 	int distanceToPlayer;
-	int distToPlayer_min = 20;
-	int distToPlayer_max = 200;
-
 	float speed;
 	float damage;
 
 	Zombie() {
-		float  speed = ((double)rand() / (RAND_MAX)) * 20;
-		float  damage = ((double)rand() / (RAND_MAX)) * 20;
+		speed = ((float)rand() / (RAND_MAX)) * 20;
+		damage = ((float)rand() / (RAND_MAX)) * 20;
 		life = 100;
+		distanceToPlayer = rand() % 200 + 20;
 	}
 
 	Zombie(int t_distanceToPlayer, float t_speed, float t_damage, int t_life) {
@@ -99,7 +96,12 @@ public:
 	void attack(Player &p) {
 
 		if (distanceToPlayer <= 0) {
-			p.life = p.life - damage;
+			if (p.life - damage > 0) {
+				p.life -= damage;
+			}
+			else {
+				p.life = 0;
+			}
 		}
 		else {
 			distanceToPlayer--;
@@ -113,7 +115,13 @@ public:
 };
 
 void Player::attack(Zombie &z) {
-	z.life = z.life - static_cast<int>(arma);
+	int damage = static_cast<int>(arma);
+	if(z.life - damage > 0){
+		z.life -= damage;
+	}
+	else {
+		z.life = 0;
+	}
 }
 //6
 
@@ -126,27 +134,32 @@ int main() {
 	bool zombiesAreAlive = true;
 	int deadZombies = 0;
 
-	for (int i = 0;i < 10;i++) {
-		zombies[i] = Zombie();
-	}
-
 	while (player.isAlive() && zombiesAreAlive) {
+		deadZombies = 0;
+		cout << "Player" << endl << "life: " << player.life << ", " << player.arma << ", precision: " << player.precision << endl;
 		for (int i = 0;i < 10;i++) {
-			if (!zombies[i].isAlive()) {
+			if (zombies[i].isAlive()) {
+				player.attack(zombies[i]);
+			}
+			if (zombies[i].isAlive()) {
+				zombies[i].attack(player);
+			}
+			else {
 				deadZombies++;
 			}
 			if (deadZombies == 10) {
 				zombiesAreAlive = false;
 			}
-			else {
-				deadZombies = 0;
-			}
-			cout << "zombie " << i << ": life --->" << zombies[i].life << " .";
+			cout << "zombie " << i << ": life ---> " << zombies[i].life << "." << endl;
 		}
+		cout << "----------------------------------------------------" << endl;
 	}
-
-
-
-
+	if (player.isAlive()) {
+		cout << "GAME OVER: Player killed all the zombies" << endl;
+	}
+	else {
+		cout << "GAME OVER: Zombies ate the player's brain" << endl;
+	}
+	system("PAUSE");
 	return 0;
 }
