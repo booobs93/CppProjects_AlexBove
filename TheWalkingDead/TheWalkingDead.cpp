@@ -14,28 +14,29 @@ Weapon arma;
 
 //3
 
-ostream& operator<<(ostream&os, const Weapon &arma) {
+ostream& operator<<(ostream& os, const Weapon &arma) {
 
 	switch (arma) {
-	case 0:
-		Weapon{ 0 } = "fists";
+	case Weapon::FISTS:
+		os << "fists";
 		break;
-	case 1:
-		Weapon{ 1 } = "gun";
+	case Weapon::GUN:
+		os << "gun";
 		break;
-	case 2:
-		Weapon{ 2 } = "shotgun";
+	case Weapon::SHOTGUN:
+		os << "shotgun";
 		break;
-	case 3:
-		Weapon{ 3 } = "revolver";
+	case Weapon::REVOLVER:
+		os << "revolver";
 		break;
-	case 4:
-		Weapon{ 4 } = "sniper";
+	case Weapon::SNIPER:
+		os << "sniper";
 		break;
-	case 5:
-		Weapon{ 5 } = "machine gun";
+	case Weapon::MACHINE_GUN:
+		os << "machine gun";
 		break;
 	}
+	return os;
 }
 
 //4,5
@@ -44,21 +45,17 @@ ostream& operator<<(ostream&os, const Weapon &arma) {
 //forward declaration
 class Zombie;
 
-
 class Player {
 public:
 	Weapon arma;
 	float precision;
-	float precision_min = 0.f;
-	float precision_max = 1.f;
 	int life;
 
 	Player() {
 		int index = rand() % 6;
 		arma = Weapon(index);
 
-		precision = rand() % precision_max;
-		precision += precision_min;
+		precision = ((float)rand() / (RAND_MAX));
 		life = 100;
 	}
 
@@ -68,15 +65,12 @@ public:
 		life = t_life;
 	}
 
-	void attack(Zombie &z) {
-		z.life = z.life - arma;
-	}
+	void attack(Zombie &z);
 
 	bool isAlive() {
 		return life > 0;
 	}
 };
-
 
 class Zombie {
 public:
@@ -87,18 +81,11 @@ public:
 	int distToPlayer_max = 200;
 
 	float speed;
-	float speed_min = 0.f;
-	float speed_max = 20.f;
-
 	float damage;
-	float damage_min = 0.f;
-	float damage_max = 20.f;
 
 	Zombie() {
-		float speed = speed_min + (rand() % speed_max + 1);
-		float damage = damage_min + (rand() % damage_max + 1);
-
-
+		float  speed = ((double)rand() / (RAND_MAX)) * 20;
+		float  damage = ((double)rand() / (RAND_MAX)) * 20;
 		life = 100;
 	}
 
@@ -125,6 +112,9 @@ public:
 
 };
 
+void Player::attack(Zombie &z) {
+	z.life = z.life - static_cast<int>(arma);
+}
 //6
 
 
