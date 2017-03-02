@@ -146,10 +146,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Downloads\DynArray.hh" />
+    <ClCompile Include="DynArray.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DynArray.cpp" />
+    <ClInclude Include="..\..\..\..\Documents\Visual Studio 2015\Projects\CppProjects_AlexBove\DynArray\DynArray.hh" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
