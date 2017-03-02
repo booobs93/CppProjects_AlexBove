@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RandomEnemyGenerator", "Ran
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TheWalkingDead", "TheWalkingDead\TheWalkingDead.vcxproj", "{0204F1D2-3217-4763-BC8F-C68B7DE20E9C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DynArray", "DynArray\DynArray.vcxproj", "{39A8B00A-370B-4FA9-9BA2-BC0704C80E64}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{0204F1D2-3217-4763-BC8F-C68B7DE20E9C}.Release|x64.Build.0 = Release|x64
 		{0204F1D2-3217-4763-BC8F-C68B7DE20E9C}.Release|x86.ActiveCfg = Release|Win32
 		{0204F1D2-3217-4763-BC8F-C68B7DE20E9C}.Release|x86.Build.0 = Release|Win32
+		{39A8B00A-370B-4FA9-9BA2-BC0704C80E64}.Debug|x64.ActiveCfg = Debug|x64
+		{39A8B00A-370B-4FA9-9BA2-BC0704C80E64}.Debug|x64.Build.0 = Debug|x64
+		{39A8B00A-370B-4FA9-9BA2-BC0704C80E64}.Debug|x86.ActiveCfg = Debug|Win32
+		{39A8B00A-370B-4FA9-9BA2-BC0704C80E64}.Debug|x86.Build.0 = Debug|Win32
+		{39A8B00A-370B-4FA9-9BA2-BC0704C80E64}.Release|x64.ActiveCfg = Release|x64
+		{39A8B00A-370B-4FA9-9BA2-BC0704C80E64}.Release|x64.Build.0 = Release|x64
+		{39A8B00A-370B-4FA9-9BA2-BC0704C80E64}.Release|x86.ActiveCfg = Release|Win32
+		{39A8B00A-370B-4FA9-9BA2-BC0704C80E64}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
