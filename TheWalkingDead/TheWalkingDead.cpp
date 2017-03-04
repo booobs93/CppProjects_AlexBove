@@ -97,7 +97,7 @@ public:
 
 		if (distanceToPlayer <= 0) {
 			if (p.life - damage > 0) {
-				p.life -= damage;
+				p.life -= (int)damage;
 			}
 			else {
 				p.life = 0;
@@ -125,10 +125,9 @@ void Player::attack(Zombie &z) {
 }
 //6
 
-
 int main() {
 
-	srand(time(nullptr));
+	srand((unsigned int)time(nullptr));
 	Player player = Player();
 	Zombie zombies[10];
 	bool zombiesAreAlive = true;
