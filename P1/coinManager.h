@@ -9,7 +9,7 @@ class CoinManager{
 public:
 	CoinManager(const int& rows, const int& cols);
 	void removeCoin(const int &x, const int &y);
-	int getCoinData(const tcoin* p);
+	int getCoinData(const tcoin** p) const;
 
 private:
 

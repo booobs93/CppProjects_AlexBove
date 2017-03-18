@@ -41,5 +41,8 @@
     <ClInclude Include="coinManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="P1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

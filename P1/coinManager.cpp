@@ -30,14 +30,13 @@ void CoinManager::removeCoin(const int &x, const int &y) {
 	}
 }
 
-int CoinManager::getCoinData(const tcoin* p){
-	p = coinData;
+int CoinManager::getCoinData(const tcoin** p) const{
+	*p = coinData;
 	return coinAmount;
 }
 
 void CoinManager::initCoinData(const int & rows, const int & cols) {
-	// valor aleatorio que comprenda como mínimo un 3%
-	// de las dimensiones del mapa(filas*columnas) y como máximo un 13 %
+	// rand value between  3% and  13 %
 	srand(time(NULL));
 	coinAmount = (rand() % (rows*cols / 10)) + rows*cols*0.03;
 	coinData = static_cast<tcoin*>(malloc(coinAmount * sizeof(tcoin)));
@@ -59,5 +58,7 @@ void CoinManager::initCoinData(const int & rows, const int & cols) {
 			}
 			// Loop again if the generated position is repeated
 		} while (repeated);
+		coinData[i].x = rndX;
+		coinData[i].y = rndY;
 	}
 }
