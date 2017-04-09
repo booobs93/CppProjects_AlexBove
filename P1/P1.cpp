@@ -19,7 +19,7 @@ void updateMap(HANDLE hConsole, Map map, const Player &p, const CoinManager & co
 	for (int i = 0; i < coin_amount; ++i) {
 		map.setCell(coin_data[i].x, coin_data[i].y, '$');
 	}
-
+	
 	// Print the user
 	map.setCell(p.getX(), p.getY(), '@');
 	// Print the map
